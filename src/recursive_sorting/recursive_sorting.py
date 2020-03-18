@@ -4,28 +4,21 @@ def merge( arrA, arrB ):
     merged_arr = [0] * elements
     # TO-DO
 
-    a, b, m = 0, 0, 0
+    a, b = 0, 0
 
-    while m < elements:
-        if a >= len(arrA) or b >= len(arrB):
-            break
+    for k in range(elements):
+        if a >= len(arrA):
+            merged_arr[k] = arrB[b]
+            b += 1
+        elif b >= len(arrB):
+            merged_arr[k] = arrA[a]
+            a += 1
         elif arrA[a] < arrB[b]:
-            merged_arr[m] = arrA[a]
+            merged_arr[k] = arrA[a]
             a += 1
         elif arrB[b] < arrA[a]:
-            merged_arr[m] = arrB[b]
+            merged_arr[k] = arrB[b]
             b += 1
-        m += 1
-
-    while a < len(arrA):
-        merged_arr[m] = arrA[a]
-        m += 1
-        a += 1
-
-    while b < len(arrB):
-        merged_arr[m] = arrB[b]
-        m += 1
-        b += 1
 
     return merged_arr
 
